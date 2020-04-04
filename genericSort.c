@@ -16,7 +16,6 @@ typedef struct People
 {
 	char* name;
 	int age;
-
 }People;
 
 // Print elements in an array
@@ -24,6 +23,7 @@ void arrayPrinter(void* a, int size, int type)
 {
 	if (type == 1) // float
 	{
+    printf("The sorted float values are: ");
 		for (int i = 0; i < size; i++)
     		printf("%.2f ", *((float*)a + i));
 	}
@@ -34,7 +34,7 @@ void arrayPrinter(void* a, int size, int type)
 
 		for (int i = 0; i < size; i++)
 		{
-			printf("%s-%d ", temp->name, temp->age);
+			printf("Name: %s, Age: %d \n", temp->name, temp->age);
 			temp = ((People*)temp + 1);
 
 			if (i != size - 1)
@@ -48,25 +48,28 @@ int floatCompare(const void* a, const void* b){
 }
 
 int nameCompare(const void* a, const void* b){
-	People* temp_a = (People*)a;
-	People* temp_b = (People*)b;
+	People* tempA = (People*)a;
+	People* tempB = (People*)b;
 
 	// Sort by name first then age
-	if(strcmp(temp_a->name, temp_b->name) == 0)
-		return (temp_a->age - temp_b->age);
+	if(strcmp(tempA->name, tempB->name) == 0)
+		return (tempA->age - tempB->age);
 
-	return strcmp(temp_a->name, temp_b->name);
+	return strcmp(tempA->name, tempB->name);
 }
 
 int ageCompare(const void* a, const void* b){
-    People* temp_a = (People*)a;
-    People* temp_b = (People*)b;
+    People* tempA = (People*)a;
+    People* tempB = (People*)b;
 
-    // Sort by age first then name
-	if((temp_a->age - temp_b->age) == 0)
-		return (strcmp(temp_a->name, temp_b->name));
+  // Sort by age first then name
+	if((tempB->age - tempA->age) == 0)
+		  return (strcmp(tempB->name, tempA->name));
 
-	return (temp_a->age - temp_b->age);
+  if(strcmp(tempA->name, tempB->name) == 0)
+      return (tempA->age - tempB->age);
+
+	return (tempB->age - tempA->age);
 }
 
 int main()
@@ -75,7 +78,7 @@ int main()
 
 	printf("\n");
 
-	// Sorting the float array
+	// Sorting array of floating point values
 	type = 1;
 	float arr_float[] = {645.32, 37.40, 76.30, 5.40, -34.23, 1.11, -34.94, 23.37, 635.46, -876.22, 467.73, 62.26};
 	structArrSize = sizeof(arr_float) / sizeof(arr_float[0]);
@@ -83,7 +86,7 @@ int main()
 	arrayPrinter(arr_float, structArrSize, type);
 	printf("\n\n");
 
-	// Sort the struct array
+	// Sorting array of structures
 	type = 2;
 	People nameAgeStruct[] = {[0].name = "Hal", [0].age = 20,
 						   [1].name = "Susann",[1].age = 31,
