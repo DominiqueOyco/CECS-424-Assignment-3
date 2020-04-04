@@ -77,10 +77,10 @@ int main()
 
 	// Sorting array of floating point values
 	type = 1;
-	float arr_float[] = {645.32, 37.40, 76.30, 5.40, -34.23, 1.11, -34.94, 23.37, 635.46, -876.22, 467.73, 62.26};
-	structArrSize = sizeof(arr_float) / sizeof(arr_float[0]);
-	qsort(arr_float, structArrSize, sizeof(float), floatCompare);
-	arrayPrinter(arr_float, structArrSize, type);
+	float floatArray[] = {645.32, 37.40, 76.30, 5.40, -34.23, 1.11, -34.94, 23.37, 635.46, -876.22, 467.73, 62.26};
+	structArrSize = sizeof(floatArray) / sizeof(floatArray[0]);
+	qsort(floatArray, structArrSize, sizeof(float), floatCompare);
+	arrayPrinter(floatArray, structArrSize, type);
 	printf("\n\n");
 
 	// Sorting array of structures
