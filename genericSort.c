@@ -64,10 +64,7 @@ int ageCompare(const void* a, const void* b){
 
   // Sort by age first then name
 	if((tempB->age - tempA->age) == 0)
-		  return (strcmp(tempB->name, tempA->name));
-
-  if(strcmp(tempA->name, tempB->name) == 0)
-      return (tempA->age - tempB->age);
+		  return (strcmp(tempA->name, tempB->name)); //if people have the same age, it will displayed in alphabetical order
 
 	return (tempB->age - tempA->age);
 }
