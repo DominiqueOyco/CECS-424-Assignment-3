@@ -2,12 +2,6 @@
 #genericSort.py
 #Dominique Oyco (014605758)
 
-# Sorting a list of floating point values
-numbers = [645.32, 37.40, 76.30, 5.40, -34.23, 1.11, -34.94, 23.37, 635.46, 
-           -876.22, 467.73, 62.26]
-numbers.sort()
-print("The sorted numbers are:", numbers, "\n") 
-
 class People:
     def __init__ (self, name, age):
         self.name = name
@@ -15,11 +9,11 @@ class People:
     def __str__(self):
         return str(self.name) + "-" + str(self.age)
 
-def cmp(x, y):
+def compare(x, y):
     return (x > y) - (x < y)
 
-def cmp_age(x, y):
-    return cmp(x.age, y.age)
+def ageCompare(x, y):
+    return compare(x.age, y.age)
 
 #List of objects similar to struct people in C. 
 #Contains a person's name and age
@@ -41,6 +35,12 @@ peopleList = [People("Hal", 20),
                People("Juan", 33), 
                People ("Natalie", 25)]
                
+# Sorting a list of floating point values
+numbers = [645.32, 37.40, 76.30, 5.40, -34.23, 1.11, -34.94, 23.37, 635.46, 
+           -876.22, 467.73, 62.26]
+numbers.sort()
+print("The sorted numbers are:", numbers, "\n") 
+
 choice = 0
 while True:
     choice = int(input("Would you like to sort by name (1) or by age (2)?: "))
