@@ -41,18 +41,21 @@ numbers = [645.32, 37.40, 76.30, 5.40, -34.23, 1.11, -34.94, 23.37, 635.46,
 numbers.sort()
 print("The sorted numbers are:", numbers, "\n") 
 
+def __repr__(self):
+    return str(self)
+
 choice = 0
 while True:
     choice = int(input("Would you like to sort by name (1) or by age (2)?: "))
     try:
         if choice == 1: #sort people by name
             peopleList.sort(key = lambda People: People.name) 
-            print(*peopleList, "\n"); #need * because if it's not present, 
+            print(*peopleList, sep = "\n"); #need * because if it's not present, 
                                       #the address will be printed instead of
                                       #the list item.
         elif choice == 2: #sort people by age in descending order
             peopleList.sort(key = lambda People: People.age, reverse = True) 
-            print(*peopleList, "\n");
+            print(*peopleList, sep = "\n");
         else:
             raise ValueError
     except ValueError:
