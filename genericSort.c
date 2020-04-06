@@ -6,9 +6,7 @@
 
 int type; //type 1 = float, type 2 = struct
 
-/*
-People contains a pair of values. A character name and an integer age
-*/
+//People contains a pair of values. A character name and an integer age
 typedef struct People
 {
 	char* name;

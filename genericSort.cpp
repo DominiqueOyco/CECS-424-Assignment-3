@@ -14,7 +14,7 @@ struct People
 	int age;
 };
 
-// Compare function for sorting array of structures
+//comparing the names of the people inside the struct array alphabetically
 int nameCompare(People const& a, People const& b) 
 {
 	// Sort by name first then age
@@ -24,6 +24,7 @@ int nameCompare(People const& a, People const& b)
 	return a.name < b.name;
 }
 
+//comparing the ages of the people inside the struct array in descending order
 int ageCompare(People const& a, People const& b)
 {
 	if (a.age == b.age)
@@ -31,8 +32,8 @@ int ageCompare(People const& a, People const& b)
 	return a.age > b.age;	
 }
 
-// Print elements in an array 
 template<class T>
+// Print elements in an array 
 void arrayPrinter(T arr[], int size)
 {
 	for (int i = 0; i < size; i++)
