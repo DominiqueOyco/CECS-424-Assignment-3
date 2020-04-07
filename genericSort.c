@@ -3,6 +3,8 @@
 // //Dominique Oyco (014605758)
 
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 int type; //type 1 = float, type 2 = struct
 
@@ -13,35 +15,25 @@ typedef struct People
 	int age;
 }People;
 
-// Print elements in an array
-void arrayPrinter(void* a, int size, int type)
-{
-	if (type == 1) // float
-	{
-    printf("The sorted float values are: ");
-		for (int i = 0; i < size; i++)
-    		printf("%.2f ", *((float*)a + i));
-	}
-
-	else if (type == 2) // struct
-	{
-		People* temp = (People*)a;
-
-		for (int i = 0; i < size; i++)
-		{
-			printf("Name: %s, Age: %d \n", temp->name, temp->age);
-			temp = ((People*)temp + 1);
-
-			if (i != size - 1)
-				printf(" ");
-		}
-	}
-}
-
+//This section contains functions of 5 types that can be used to 
+//pass in the built-in qsort function.
 int floatCompare(const void* a, const void* b){
   	return ((*(float*)a) - (*(float*)b));
 }
 
+int intCompare(const void* a, const void* b){
+  	return ((*(int*)a) - (*(int*)b));	
+}
+
+int charCompare(const void* a, const void* b){
+  	return ((*(char*)a) - (*(char*)b));	
+}
+
+int stringCompare(const void* a, const void* b){
+	return strcmp((*(char**)a) , (*(char**)b));
+}
+
+//nameCompare & ageCompare are in the same struct type.
 int nameCompare(const void* a, const void* b){
 	People* tempA = (People*)a;
 	People* tempB = (People*)b;
@@ -64,12 +56,60 @@ int ageCompare(const void* a, const void* b){
 	return (tempB->age - tempA->age);
 }
 
+// Print elements on the 5 types. On an old school language like C, we have to specify the types
+//but in C's predecessors like C++ and C#, we do not have to because it is built in.
+void arrayPrinter(void* a, int size, int type)
+{
+	if (type == 1) // float
+	{
+    	printf("The sorted float values are: ");
+		for (int i = 0; i < size; i++)
+    		printf("%.2f ", *((float*)a + i));
+	}
+
+	else if(type == 2) //integer
+	{
+    	printf("The sorted int values are: ");
+		for (int i = 0; i < size; i++)
+    		printf("%d ", *((int*)a + i));
+	}
+
+	else if(type == 3) //character
+	{
+    	printf("The sorted char values are: ");
+		for (int i = 0; i < size; i++)
+    		printf("%c ", *((char*)a + i));
+	}
+
+	else if(type == 4) //string
+	{
+    	printf("The sorted string values are: ");
+		for (int i = 0; i < size; i++)
+    		printf("%s ", ((char*)a));
+	}
+
+	else if (type == 5) // struct
+	{
+		People* temp = (People*)a;
+
+		for (int i = 0; i < size; i++)
+		{
+			printf("Name: %s, Age: %d \n", temp->name, temp->age);
+			temp = ((People*)temp + 1);
+
+			if (i != size - 1)
+				printf(" ");
+		}
+	}
+}
+
 int main()
 {
 	int structArrSize;
 
 	printf("\n");
 
+	//The following section, tests out the following data from the lab manual.
 	// Sorting array of floating point values
 	type = 1;
 	float floatArray[] = {645.32, 37.40, 76.30, 5.40, -34.23, 1.11, -34.94, 23.37, 635.46, -876.22, 467.73, 62.26};
@@ -79,7 +119,7 @@ int main()
 	printf("\n\n");
 
 	// Sorting array of structures
-	type = 2;
+	type = 5;
 	People nameAgeStruct[] = {[0].name = "Hal", [0].age = 20,
 						   [1].name = "Susann",[1].age = 31,
 						   [2].name = "Dwight",[2].age = 19,
@@ -122,5 +162,4 @@ int main()
   }while(choice != 1 || choice != 2);
 
   return 0;
-
 }

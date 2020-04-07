@@ -48,7 +48,7 @@
      static void structPrinter(People[]arr)
      {
          foreach (People item in arr)
-             System.Console.Write("Name: " + item.name + ", Age:" + item.age + "\n");
+             System.Console.Write("Name: " + item.name + ", Age: " + item.age + "\n");
      }
 
      static void Main(string[] args)
@@ -98,4 +98,3 @@
 		}while(choice != 1 || choice != 2);
      }
  }
- 

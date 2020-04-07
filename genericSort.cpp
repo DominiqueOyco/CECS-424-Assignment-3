@@ -36,6 +36,7 @@ template<class T>
 // Print elements in an array 
 void arrayPrinter(T arr[], int size)
 {
+	cout << "The sorted numbers are: ";
 	for (int i = 0; i < size; i++)
 		cout << arr[i] << " ";
 }

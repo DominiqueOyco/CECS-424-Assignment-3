@@ -33,7 +33,7 @@ peopleList = [People("Hal", 20),
                People("Risa", 24), 
                People("Benny", 28),
                People("Juan", 33), 
-               People ("Natalie", 25)]
+               People("Natalie", 25)]
                
 # Sorting a list of floating point values
 numbers = [645.32, 37.40, 76.30, 5.40, -34.23, 1.11, -34.94, 23.37, 635.46, 
