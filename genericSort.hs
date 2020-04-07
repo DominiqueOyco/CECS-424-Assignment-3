@@ -18,18 +18,18 @@ age    (People n a) = a
 {-instance Ord People where
   compare x y =
     let
-        d = compare (name x) (name y)
+        n = compare (name x) (name y)
     in
-        if d == EQ then compare (age x) (age y) else d-}
+        if n == EQ then compare (age x) (age y) else n-}
 
 
 -- Sorting people by their ages in descending order first then names alphabetically.
 instance Ord People where
   compare x y =
     let
-        d = compare (age y) (age x)
+        o = compare (age y) (age x)
     in
-        if d == EQ then compare (name x) (name y) else d
+        if o == EQ then compare (name x) (name y) else o
 
 
 main :: IO ()
